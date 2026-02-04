@@ -26,7 +26,7 @@ class CustomTextObject extends RenderBox {
   }
 
   set style(TextStyle? val) {
-    if (val != null && val != _style) {
+    if (val != _style) {
       _style = val;
       updatePainter();
       markNeedsLayout();
@@ -42,6 +42,10 @@ class CustomTextObject extends RenderBox {
 
   @override
   void performLayout() {
+    if (_painter == null) {
+      size = Size.zero;
+      return;
+    }
     _painter?.layout(minWidth: 0, maxWidth: constraints.maxWidth);
 
     size = constraints.constrain(Size(_painter!.width, _painter!.height));
@@ -55,7 +59,7 @@ class CustomTextObject extends RenderBox {
   @override
   double computeMaxIntrinsicHeight(double width) {
     _painter?.layout(maxWidth: width);
-    return _painter!.width;
+    return _painter!.height;
   }
 
   @override

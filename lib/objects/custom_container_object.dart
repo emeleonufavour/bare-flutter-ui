@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Box extends RenderBox {
+class CustomBoxObject extends RenderBox {
   double _width;
   double _height;
   Color? _color;
 
-  Box({required double width, required double height, Color? color})
+  CustomBoxObject({required double width, required double height, Color? color})
     : _color = color,
       _height = height,
       _width = width;
@@ -31,19 +31,16 @@ class Box extends RenderBox {
 
   @override
   void performLayout() {
-    super.performLayout();
-
     size = constraints.constrain(Size(_width, _height));
   }
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    super.paint(context, offset);
-
+    if (color == null) return;
     final paint = Paint();
 
-    if (_color != null) {
-      paint.color = _color!;
-    }
+    paint.color = _color!;
+
+    context.canvas.drawRect(offset & size, paint);
   }
 }
