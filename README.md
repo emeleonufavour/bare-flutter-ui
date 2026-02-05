@@ -20,3 +20,7 @@ I was bored and wanted to do something Flutter related and it had to be somethin
 ---
 
 Oh yeah and to better understand Flutter's layout engine by rebuilding it.
+
+## Here is the UI I built
+
+![UI Screenshot](assets/ui.png)
