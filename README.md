@@ -1,16 +1,22 @@
-# bare_flutter_ui
+# 🛠️ Bare Flutter UI
 
-A new Flutter project.
+**A "Bare Metal" implementation of Flutter layouts.**
 
-## Getting Started
+This project bypasses the standard Flutter Widget library (`Container`, `Row`, `Column`, `Wrap`,`Center`,`Padding`,`SizedBox`,`Text`) to implement a custom rendering layer from the ground up.
 
-This project is a starting point for a Flutter application.
+## 🚀 What is this?
 
-A few resources to get you started if this is your first Flutter project:
+This project lives in the **Render Layer**.
+It features custom implementations of:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- `RenderProxyBox` for Padding and Sizing.
+- `RenderBox` with custom layout algorithms for Rows and Columns.
+- `ContainerBoxParentData` for custom Wrapping logic.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧠 Why?
+
+I was bored and wanted to do something Flutter related and it had to be something deeper than the usual stuff.
+
+---
+
+Oh yeah and to better understand Flutter's layout engine by rebuilding it.
