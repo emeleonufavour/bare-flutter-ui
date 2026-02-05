@@ -1,4 +1,4 @@
-import 'package:bare_flutter_ui/objects/custom_padding_object.dart';
+import 'package:bare_flutter_ui/presentation/render_objects/custom_padding_object.dart';
 import 'package:flutter/material.dart';
 
 class PaddingWidget extends SingleChildRenderObjectWidget {

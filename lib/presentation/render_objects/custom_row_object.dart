@@ -7,6 +7,19 @@ class CustomRowObject extends RenderBox
         ContainerRenderObjectMixin<RenderBox, FlexParentData>,
         RenderBoxContainerDefaultsMixin<RenderBox, FlexParentData>,
         DebugOverflowIndicatorMixin {
+  double? _spacing;
+
+  CustomRowObject({double? spacing}) : _spacing = spacing;
+
+  double? get spacing => _spacing;
+
+  set spacing(double? val) {
+    if (val != _spacing) {
+      _spacing = val;
+      markNeedsLayout();
+    }
+  }
+
   @override
   void setupParentData(covariant RenderObject child) {
     if (child.parentData is! FlexParentData) {
@@ -31,7 +44,7 @@ class CustomRowObject extends RenderBox
 
       maxHeight = max(maxHeight, child.size.height);
 
-      dx += child.size.width;
+      dx += child.size.width + (_spacing ?? 0);
       child = parentData.nextSibling;
     }
 

@@ -7,6 +7,30 @@ class CustomWrapObject extends RenderBox
         ContainerRenderObjectMixin<RenderBox, FlexParentData>,
         RenderBoxContainerDefaultsMixin<RenderBox, FlexParentData>,
         DebugOverflowIndicatorMixin {
+  double? _horizontalSpacing;
+  double? _verticalSpacing;
+
+  CustomWrapObject({double? horizontalSpacing, double? verticalSpacing})
+    : _horizontalSpacing = horizontalSpacing,
+      _verticalSpacing = verticalSpacing;
+
+  double? get verticalSpacing => _verticalSpacing;
+  double? get horizontalSpacing => _horizontalSpacing;
+
+  set verticalSpacing(double? val) {
+    if (val != _verticalSpacing) {
+      _verticalSpacing = val;
+      markNeedsLayout();
+    }
+  }
+
+  set horizontalSpacing(double? val) {
+    if (val != _horizontalSpacing) {
+      _horizontalSpacing = val;
+      markNeedsLayout();
+    }
+  }
+
   @override
   void setupParentData(RenderBox child) {
     if (child.parentData is! FlexParentData) {
@@ -30,15 +54,17 @@ class CustomWrapObject extends RenderBox
 
       child.layout(constraints.loosen(), parentUsesSize: true);
 
-      if (dx > 0 && (dx + child.size.width) > constraints.maxWidth) {
+      if (dx > 0 &&
+          (dx + child.size.width + (_horizontalSpacing ?? 0)) >
+              constraints.maxWidth) {
         dx = 0;
-        dy += maxRowHeight;
+        dy += (maxRowHeight + (_verticalSpacing ?? 0));
         maxRowHeight = 0;
       }
 
       childParentData.offset = Offset(dx, dy);
 
-      dx += child.size.width;
+      dx += (child.size.width + (_horizontalSpacing ?? 0));
 
       maxRowHeight = max(maxRowHeight, child.size.height);
 

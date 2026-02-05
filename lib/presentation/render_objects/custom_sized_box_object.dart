@@ -1,23 +1,23 @@
 import 'package:flutter/rendering.dart';
 
 class CustomSizedBoxObject extends RenderProxyBox {
-  double _height;
-  double _width;
+  double? _height;
+  double? _width;
 
-  CustomSizedBoxObject({required double height, required double width})
+  CustomSizedBoxObject({double? height, double? width})
     : _width = width,
       _height = height;
 
-  double get height => _height;
-  set height(double val) {
+  double? get height => _height;
+  set height(double? val) {
     if (val != _height) {
       _height = val;
       markNeedsLayout();
     }
   }
 
-  double get width => _width;
-  set width(double val) {
+  double? get width => _width;
+  set width(double? val) {
     if (val != _width) {
       _width = val;
       markNeedsLayout();
@@ -27,7 +27,7 @@ class CustomSizedBoxObject extends RenderProxyBox {
   @override
   void performLayout() {
     if (child == null) {
-      size = constraints.constrain(Size(_width, _height));
+      size = constraints.constrain(Size(_width ?? 0, _height ?? 0));
       return;
     }
     BoxConstraints tightConstraints = BoxConstraints.tightFor(

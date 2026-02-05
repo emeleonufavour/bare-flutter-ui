@@ -1,4 +1,4 @@
-import 'package:bare_flutter_ui/objects/custom_column_object.dart';
+import 'package:bare_flutter_ui/presentation/render_objects/custom_column_object.dart';
 import 'package:flutter/material.dart';
 
 class ColumnWidget extends MultiChildRenderObjectWidget {
@@ -11,14 +11,17 @@ class ColumnWidget extends MultiChildRenderObjectWidget {
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return CustomColumnObject();
+    return CustomColumnObject(
+      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+    );
   }
 
   @override
   void updateRenderObject(
     BuildContext context,
-    covariant CustomColumnObject renderObject,
+    CustomColumnObject renderObject,
   ) {
-    super.updateRenderObject(context, renderObject);
+    renderObject.crossAxisAlignment =
+        crossAxisAlignment ?? CrossAxisAlignment.start;
   }
 }

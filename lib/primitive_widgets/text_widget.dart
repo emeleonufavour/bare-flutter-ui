@@ -1,4 +1,4 @@
-import 'package:bare_flutter_ui/objects/custom_text_object.dart';
+import 'package:bare_flutter_ui/presentation/render_objects/custom_text_object.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends LeafRenderObjectWidget {
@@ -8,7 +8,7 @@ class TextWidget extends LeafRenderObjectWidget {
   const TextWidget({super.key, required this.text, this.style});
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return CustomTextObject(text: text);
+    return CustomTextObject(text: text, style: style);
   }
 
   @override

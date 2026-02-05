@@ -1,16 +1,11 @@
-import 'package:bare_flutter_ui/objects/custom_sized_box_object.dart';
+import 'package:bare_flutter_ui/presentation/render_objects/custom_sized_box_object.dart';
 import 'package:flutter/material.dart';
 
 class SizedBoxWidget extends SingleChildRenderObjectWidget {
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
 
-  const SizedBoxWidget({
-    super.key,
-    required this.height,
-    required this.width,
-    super.child,
-  });
+  const SizedBoxWidget({super.key, this.height, this.width, super.child});
   @override
   RenderObject createRenderObject(BuildContext context) {
     return CustomSizedBoxObject(height: height, width: width);
