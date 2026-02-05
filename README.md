@@ -24,3 +24,5 @@ Oh yeah and to better understand Flutter's layout engine by rebuilding it.
 ## Here is the UI I built
 
 ![UI Screenshot](assets/ui.png)
+
+If the image is not showing just check it out in the assets folder. Thank you :)
